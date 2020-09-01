@@ -1,0 +1,22 @@
+{
+  "name": "climbmc",
+  "version": "1.0.0",
+  "description": "Discord bot for ClimbMC.",
+  "main": "mc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JAROFGORM/ClimbMC.git"
+  },
+  "author": "JarOfGorm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JAROFGORM/ClimbMC/issues"
+  },
+  "homepage": "https://github.com/JAROFGORM/ClimbMC#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
