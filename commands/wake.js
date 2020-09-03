@@ -3,7 +3,7 @@ module.exports = {
     description: "sees if bot is awake.",
         execute(message, args){
             message.channel.send('eh.');
-
+            message.delete().catch(console.error);
 
 
         }

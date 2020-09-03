@@ -2,6 +2,7 @@
 
 const Discord = require('discord.js');
 const config =  require('./config.json');
+const {MessageEmbed} = require('discord.js');
 const client = new Discord.Client({disableEveryone: true});
 const fs = require('fs');
 const { prefix } = require('./config.json');
@@ -27,21 +28,10 @@ fs.readdir("./commands/", (err, files) => {
 // Command Handler (end)
 
 client.once('ready', async () => {
-    console.log(`${client.user.username} is logged in!`);
-        client.user.setActivity("ClimbMC.com");
+    console.log(`${client.user.username} is logged in!`);  //logs bot once it is online.
+        client.user.setActivity("ClimbMC.com"); //sets bot's activity to 'Playing ClimbMC.com'
 
 });
-
-client.on("message", async message => {
-    if(message.author.client) return;
-    if(message.channel.type === "dm") return;
-    let handle = config.handle;
-    let command = messageArray[0];
-    let args = messageArray.slice(1);
-    let cmdFile = client.commands.get(command.slice(handle.length));
-        if(cmdFile) commandFile.run(client, message, args);
-
-})
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
@@ -64,20 +54,30 @@ client.on('message', message => {
             client.commands.get('store').execute(message, args);
         break;
 
-        case "polls":
-            client.commands.get('polls').execute(message, args);
+        case "poll":
+            client.commands.get('poll').execute(message, args);
+        break;
+
+        case "clear":
+            client.commands.get('clear').execute(message, args);
+        break;
+
+        case "verify":
+            client.commands.get('verify').execute(message, args);
         break;
 
     }
  
 });
-// Command List
+// Command List (end)
 
 client.on('guildMemberAdd', member => {
 const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
 if (!channel) return;
 
-channel.send('Welcome to ClimbMC, ${member}');
+channel.send(`Welcome to ClimbMC, ${member}`);
 });
 
 client.login(config.token);
+
+// 750957892982669383 (unverified user)
